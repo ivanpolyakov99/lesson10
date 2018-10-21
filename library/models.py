@@ -7,8 +7,7 @@ class Book(models.Model):
     authors = models.ManyToManyField(
         'library.Author',
         related_name='books',
-        null=True,
-        on_delete=models.CASCADE
+        null=True
     )
 
 
@@ -79,12 +78,12 @@ class TestField(models.Model):
 
     file_field = models.FileField(null=True)
     image_field = models.ImageField(null=True)
-    binary_field = models.BinaryField()
+    binary_field = models.BinaryField(null=True)
 
     class Meta:
         verbose_name = 'my class name'
         verbose_name_plural = 'my class names'
-        ordering = ('-create_at', 'char_field')
+        # ordering = ('-create_at', 'char_field')
         index_together = (
             ('date_field', 'created_at'),
             ('updated_at', 'slug_field', 'array_field')
