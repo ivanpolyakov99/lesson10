@@ -1,0 +1,10 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    {{ block.super }} - Child
+{% endblock title %}
+
+{% block content %}
+    <h1>Child text</h1>
+    {{ block.super }}
+{% endblock content %}

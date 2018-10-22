@@ -1,0 +1,46 @@
+{% load static %}
+{% load my_tags %}
+
+<html>
+<head>
+<title>
+    {% block title %}
+        Index
+    {% endblock title %}
+</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>#</td>
+            <td>Name</td>
+            <td>Level</td>
+            <td>Date</td>
+        </tr>
+        {% for test in tests %}
+            {% if test.level == 5 %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ test.name }}</td>
+                    <td>{{ test.level }}</td>
+                    <td>{{ test.updated_at|date:"M/d/Y" }}</td>
+                </tr>
+            {% else %}
+                <tr><td>{{ forloop.counter }}</td></tr>
+            {% endif %}
+        {% empty %}
+            If tests are empty
+        {% endfor %}
+    </table>
+{% block content %}
+    Content parent
+{% endblock content %}
+{% with name=None %}
+    <h1>{{ name|default:"Default value" }}</h1>
+    <h1>{{ "Hello,World"|my_filter:"," }}</h1>
+{% endwith %}
+    <h1>{% my_tag 'first' 'second' %}</h1>
+<h2>{% lorem count %}</h2>
+
+</body>
+</html>

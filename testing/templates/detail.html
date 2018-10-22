@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail</title>
+</head>
+<body>
+    {{ test }}
+    <hr/>
+    <table>
+        {% for question in test.questions.all %}
+            <tr><td>{{ question }}</td></tr>
+        {% endfor %}
+    </table>
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="password"placeholder="email">
+        <button type="submit">Submit</button>
+    </form>
+    <input type="checkbox">1
+    <input type="checkbox">2
+    <input type="checkbox">3
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tests</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>#</td>
+            <td>Name</td>
+            <td>Level</td>
+            <td>Date</td>
+        </tr>
+        {% for test in tests %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td><a href="{% url 'details' id=test.id %}">{{ test.name }}</a></td>
+                <td>{{ test.level }}</td>
+                <td>{{ test.updated_at|date:"d/M/Y" }}</td>
+            </tr>
+        {% empty %}
+            If tests are empty
+        {% endfor %}
+    </table>
+</body>
+</html>
