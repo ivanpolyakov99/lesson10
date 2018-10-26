@@ -1,3 +1,4 @@
+{% load my_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,19 +8,20 @@
 <body>
     {{ test }}
     <hr/>
-    <table>
-        {% for question in test.questions.all %}
-            <tr><td>{{ question }}</td></tr>
-        {% endfor %}
-    </table>
-    <form method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="password"placeholder="email">
-        <button type="submit">Submit</button>
-    </form>
-    <input type="checkbox">1
-    <input type="checkbox">2
-    <input type="checkbox">3
+    {% for question in test.questions.all %}
+        <form action="{% url 'add_answer' id=question.id %}" method="post">
+            <p>{{ forloop.counter }}. {{ question }} - {% check_question request.user question %}</p>
+            {% csrf_token %}
+            <ul>
+                {% for answer in question.answers.all %}
+                <li>
+                    <input id="{{ answer.id }}" type="checkbox" name="{{ question.id }}" value="{{ answer.id }}">
+                    <label for="{{ answer.id }}">{{ answer }}</label>
+                </li>
+                {% endfor %}
+            </ul>
+            <button>Submit</button>
+        </form>
+    {% endfor %}
 </body>
 </html>

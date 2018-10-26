@@ -50,8 +50,8 @@ class UserAnswerAdmin(admin.ModelAdmin):
     def get_answers(self, obj):
         return str(obj.answer.all())
 
-    def has_delete_permission(self, request, obj=None):
-        return False
+    # def has_delete_permission(self, request, obj=None):
+    #     return False
 
     def get_readonly_fields(self, request, obj=None):
         if obj:

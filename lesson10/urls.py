@@ -22,5 +22,7 @@ from lesson10.views import my_first_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('testing.urls')),
+    path('library/', include('library.urls')),
     path('<str:name>/<str:last_name>', my_first_view, name='first_view'),
+    path('accounts/', include('django.contrib.auth.urls'))
 ]

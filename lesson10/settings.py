@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from django.urls import reverse_lazy
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -124,3 +126,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+LOGIN_REDIRECT_URL = reverse_lazy('index')
+LOGOUT_REDIRECT_URL = reverse_lazy('index')
