@@ -13,6 +13,8 @@ class Test(models.Model):
         verbose_name='new name',
         max_length=255
     )
+    image = models.ImageField(null=True, blank=True)
+    file = models.FileField(null=True, blank=True)
     level = models.PositiveSmallIntegerField(
         choices=LEVELS,
         default=MIN_LEVEL
@@ -21,6 +23,11 @@ class Test(models.Model):
 
     def __str__(self):
         return self.name
+
+    def is_hard(self):
+        if self.level > 5:
+            return True
+        return False
 
     class Meta:
         verbose_name = 'Test'

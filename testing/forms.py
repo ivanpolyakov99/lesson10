@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
 
 from testing.models import Test, Question, Answer, UserAnswer
 
@@ -32,6 +33,7 @@ class UserAnswerForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user')
+        self.question = None
         super().__init__(*args, **kwargs)
         self.fields['answer_ids'].clean = lambda x: x
 
@@ -40,6 +42,7 @@ class UserAnswerForm(forms.Form):
         question = Question.objects.filter(id=question_id).first()
         if not question:
             raise forms.ValidationError('Invalid question')
+        self.question = question
         return question
 
     def clean_answer_ids(self):
@@ -72,3 +75,10 @@ class UserAnswerForm(forms.Form):
             user=self.user
         )
         user_answer.answer.add(*self.cleaned_data['answer_ids'])
+
+
+class UserCreateForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        fields = (
+            # 'first_name', 'last_name', 'email'
+        ) + UserCreationForm.Meta.fields

@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.utils.safestring import mark_safe
+
 from testing.models import Test, Question, Answer, UserAnswer
 
 # Register your models here.
@@ -12,10 +14,15 @@ class QuestionInline(admin.TabularInline):
 
 
 class TestAdmin(admin.ModelAdmin):
-    list_display = ('name', 'level', 'updated_at')
+    list_display = ('name', 'level', 'updated_at', 'get_image')
     search_fields = ('name',)
     list_filter = ('level', 'updated_at')
     inlines = [QuestionInline]
+
+    def get_image(self, obj):
+        url = obj.image.url if obj.image else None
+        if url:
+            return mark_safe(f'<img src="{url}"/>')
 
 
 class AnswerInline(admin.TabularInline):

@@ -38,3 +38,9 @@ easy* - форма содержит checkbox/radiobutton с вариантами
 
 # HOMEWORK 5
 1. Создать view,form,template для регистрации пользователя. Добавить валидацию.
+
+# HOMEWORK 6
+1. Добавить статику к проекту
+https://getbootstrap.com/docs/4.1/getting-started/download/
+2. Исходя из добавленной статики - сделать "красивыми" странички с тестами, логином и реистрацией
+3. TBU

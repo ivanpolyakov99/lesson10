@@ -6,7 +6,7 @@
     <title>Detail</title>
 </head>
 <body>
-    {{ test }}
+    {{ test }} - {{ processor }}
     <hr/>
     {% for question in test.questions.all %}
         <form action="{% url 'add_answer' id=question.id %}" method="post">

@@ -3,13 +3,17 @@ from django.http import Http404
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
+from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.views.generic import FormView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import TemplateView
+from django.contrib.auth import login, authenticate
 
 from testing.models import Test, Answer, UserAnswer
-from testing.forms import MyModelForm, UserAnswerForm
+from testing.forms import MyModelForm, UserAnswerForm, UserCreateForm
+
 
 # Create your views here.
 
@@ -107,4 +111,27 @@ class UserAnswerView(FormView):
 
     def form_valid(self, form):
         form.save()
-        return redirect(reverse('details', kwargs={'id': 3}))
+        return redirect(reverse('details', kwargs={
+            'id': form.question.test.id
+        }))
+
+    def form_invalid(self, form):
+        return redirect(reverse('details', kwargs={
+            'id': form.question.test.id
+        }))
+
+
+class SignupView(FormView):
+    form_class = UserCreateForm
+    template_name = 'signup.html'
+    success_url = reverse_lazy('index')
+
+    def form_valid(self, form):
+        form.save()
+        user = authenticate(
+            request=self.request,
+            username=form.cleaned_data['username'],
+            password=form.cleaned_data['password1']
+        )
+        login(self.request, user)
+        return super().form_valid(form)
