@@ -37,7 +37,6 @@
 {% endblock content %}
 {% with name=None %}
     <h1>{{ name|default:"Default value" }}</h1>
-    <h1>{{ "Hello,World"|my_filter:"," }}</h1>
 {% endwith %}
     <h1>{% my_tag 'first' 'second' %}</h1>
 <h2>{% lorem count %}</h2>

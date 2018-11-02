@@ -54,6 +54,9 @@ class UserAnswerForm(forms.Form):
 
     def clean(self):
         cleaned_data = super().clean()
+        if self.errors:
+            return cleaned_data
+
         answers = cleaned_data['answer_ids']
         question = cleaned_data['question_id']
         for answer in answers:

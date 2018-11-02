@@ -1,27 +1,25 @@
+{% extends 'base.html' %}
 {% load my_tags %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Detail</title>
-</head>
-<body>
-    {{ test }} - {{ processor }}
-    <hr/>
+
+{% block content %}
     {% for question in test.questions.all %}
         <form action="{% url 'add_answer' id=question.id %}" method="post">
-            <p>{{ forloop.counter }}. {{ question }} - {% check_question request.user question %}</p>
+            <p>{{ forloop.counter }}. {{ question }}</p>
             {% csrf_token %}
+            {% with is_answered=question|check_question:request.user %}
             <ul>
                 {% for answer in question.answers.all %}
-                <li>
-                    <input id="{{ answer.id }}" type="checkbox" name="{{ question.id }}" value="{{ answer.id }}">
-                    <label for="{{ answer.id }}">{{ answer }}</label>
-                </li>
+                <div class="form-check">
+                    <input {% if is_answered is not None %}disabled{% endif %} name="{{ question.id }}" class="form-check-input" type="checkbox" value="{{ answer.id }}" id="defaultCheck{{ answer.id }}">
+                    <label class="form-check-label" for="defaultCheck{{ answer.id }}">
+                        {{answer}}
+                    </label>
+                </div>
                 {% endfor %}
             </ul>
-            <button>Submit</button>
+            <button {% if is_answered is not None %}disabled{% endif %} type="submit" class="btn btn-success">Submit</button>
+            {% endwith %}
+            <hr>
         </form>
     {% endfor %}
-</body>
-</html>
+{% endblock %}

@@ -20,7 +20,7 @@ from testing.forms import MyModelForm, UserAnswerForm, UserCreateForm
 
 def test_view(request, *args, **kwargs):
     parent = request.GET.get('parent', '')
-    block_count = request.GET.get('count') or 1
+    block_count = int(request.GET.get('count') or 1)
     if parent:
         template = 'index.html'
     else:

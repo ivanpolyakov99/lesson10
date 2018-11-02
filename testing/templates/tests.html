@@ -1,45 +1,25 @@
-{% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Tests</title>
-    <link rel="stylesheet" href="{% static 'testing/style.css' %}"/>
-</head>
-<body id="body">
-    {{ processor }}<hr>
-    {% if request.user.is_authenticated %}
-        {{ request.user }}
-        <a href="{% url 'logout' %}">Logout</a>
-    {% else %}
-        <a href="{% url 'login' %}">Login</a>
-        <a href="{% url 'signup' %}">Signup</a>
-    {% endif %}
-    <table>
-        <tr>
-            <td class="first-column">#</td>
-            <td>Name</td>
-            <td>Level</td>
-            <td>Date</td>
-            <td>Image</td>
-        </tr>
+{% extends 'base.html' %}
+{% block content %}
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Level</th>
+                <th scope="col">Date</th>
+            </tr>
+        </thead>
+        <tbody>
         {% for test in tests %}
             <tr>
-                <td class="first-column">{{ forloop.counter }}</td>
+                <th scope="row">{{ forloop.counter }}</th>
                 <td><a href="{% url 'details' id=test.id %}">{{ test.name }}</a></td>
                 <td>{{ test.level }}</td>
                 <td>{{ test.updated_at|date:"d/M/Y" }}</td>
-                <td class="img">
-                    {% if test.image %}
-                    <img src="{{ test.image.url}}"/>
-                    {% endif %}
-                </td>
             </tr>
         {% empty %}
             If tests are empty
         {% endfor %}
+        </tbody>
     </table>
-    <script src="{% static 'testing/script.js' %}"></script>
-</body>
-</html>
+{% endblock content %}
