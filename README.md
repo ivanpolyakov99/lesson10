@@ -49,3 +49,7 @@ https://getbootstrap.com/docs/4.1/getting-started/download/
 1. Покрыть тестами оставшиеся forms & view в приложении testing
 2. Создать middleware, которая будет писать в базу 500 ошибки приложения(Если такие будут). PS. Покрыть тестами.
 3. Добавить список ошибок в админку.
+
+## DOCS
+ - https://docs.djangoproject.com/en/2.1/topics/testing/overview/
+ - https://docs.djangoproject.com/en/2.1/topics/http/middleware/
