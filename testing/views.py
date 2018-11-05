@@ -13,9 +13,16 @@ from django.contrib.auth import login, authenticate
 
 from testing.models import Test, Answer, UserAnswer
 from testing.forms import MyModelForm, UserAnswerForm, UserCreateForm
+from django.utils.translation import gettext_lazy as _
+from django.utils.translation import ngettext_lazy
+
+
 
 
 # Create your views here.
+
+class MyException(Exception):
+    pass
 
 
 def test_view(request, *args, **kwargs):
@@ -25,12 +32,24 @@ def test_view(request, *args, **kwargs):
         template = 'index.html'
     else:
         template = 'child.html'
+    raise_exception = request.GET.get('exception', '')
+    if raise_exception:
+        raise MyException('Our exception')
+    text = _('%(street)s st. city: %(city)s') % {
+        'street': 'Some street',
+        'city': 'Minsk'
+    }
+    count = ngettext_lazy('%(count)d ruble', '%(count)d rubles', block_count) % {
+        'count': block_count
+    }
     return render(
         request,
         template,
         context={
             "tests": Test.objects.all(),
-            "count": block_count
+            "count": block_count,
+            "text": text,
+            "count_text": count
         }
     )
 

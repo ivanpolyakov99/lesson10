@@ -27,7 +27,7 @@ SECRET_KEY = 'l(!3e-y$5!-22%9(y6#z%ep@@f4n*0(%)9af0gucl8y_ivx65l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'testing'
+    'testing',
+    'logger',
 ]
 
 MIDDLEWARE = [
@@ -50,9 +51,16 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'testing.middleware.MyFirstClassMiddleware',
     'testing.middleware.my_first_middleware',
-    'testing.middleware.MyFirstClassMiddleware'
+    'logger.middleware.ApplicationErrorMiddleware',
 ]
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
+print(LOCALE_PATHS)
 
 ROOT_URLCONF = 'lesson10.urls'
 
@@ -112,7 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'Europe/Minsk'
 
@@ -121,6 +129,12 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+LANGUAGES = [
+    ('en', 'English'),
+    ('ru', 'Russian'),
+]
+
 
 
 # Static files (CSS, JavaScript, Images)

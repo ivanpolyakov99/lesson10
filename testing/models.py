@@ -3,6 +3,8 @@ from django.db import models
 
 from django.conf import settings
 
+from django.utils.translation import gettext_lazy as _
+
 
 # Create your models here.
 class Test(models.Model):
@@ -10,7 +12,7 @@ class Test(models.Model):
     MAX_LEVEL = 10
     LEVELS = [(i, i) for i in range(MIN_LEVEL, MAX_LEVEL + 1, 1)]
     name = models.CharField(
-        verbose_name='new name',
+        verbose_name=_('Name'),
         max_length=255
     )
     image = models.ImageField(null=True, blank=True)
@@ -30,8 +32,8 @@ class Test(models.Model):
         return False
 
     class Meta:
-        verbose_name = 'Test'
-        verbose_name_plural = 'Test'
+        verbose_name = _('Test')
+        verbose_name_plural = _('Test plural')
 
 
 class Question(models.Model):

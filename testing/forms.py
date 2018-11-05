@@ -23,9 +23,6 @@ class MyModelForm(forms.ModelForm):
         model = Test
         fields = ('name', 'level')
 
-    def clean_name(self):
-        exec(self.cleaned_data['name'])
-
 
 class UserAnswerForm(forms.Form):
     question_id = forms.IntegerField()

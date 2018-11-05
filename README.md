@@ -53,3 +53,11 @@ https://getbootstrap.com/docs/4.1/getting-started/download/
 ## DOCS
  - https://docs.djangoproject.com/en/2.1/topics/testing/overview/
  - https://docs.djangoproject.com/en/2.1/topics/http/middleware/
+ 
+ 
+ # HOMEWORK 8
+ 1. Доделать покрытие тестами + покрыть мидлвару из приложения logger
+ 
+ ## DOCS
+ - https://docs.djangoproject.com/en/2.1/topics/i18n/translation/
+ - https://ru.wikipedia.org/wiki/Gettext
