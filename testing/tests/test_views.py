@@ -49,7 +49,7 @@ class TestView(test.TestCase):
         details = reverse('details', kwargs={'id': self.test.id})
         response = self.client.get(details)
         login_url = settings.LOGIN_URL
-        self.assertRedirects(response, f'{login_url}?next={details}')
+        self.assertRedirects(response, f'{login_url}?next={details}', target_status_code=302)
 
         is_success = self.client.login(username='username', password='2')
         self.assertFalse(is_success)

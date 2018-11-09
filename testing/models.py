@@ -15,7 +15,11 @@ class Test(models.Model):
         verbose_name=_('Name'),
         max_length=255
     )
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField(
+        verbose_name=_('Image'),
+        null=True,
+        blank=True,
+    )
     file = models.FileField(null=True, blank=True)
     level = models.PositiveSmallIntegerField(
         choices=LEVELS,

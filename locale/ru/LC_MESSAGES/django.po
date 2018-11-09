@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-05 21:53+0300\n"
+"POT-Creation-Date: 2018-11-09 19:24+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,11 +24,15 @@ msgstr ""
 msgid "Name"
 msgstr "Название"
 
-#: testing/models.py:35
+#: testing/models.py:19
+msgid "Image"
+msgstr "Картинка"
+
+#: testing/models.py:39
 msgid "Test"
 msgstr "Тест"
 
-#: testing/models.py:36
+#: testing/models.py:40
 msgid "Test plural"
 msgstr "Тесты"
 
@@ -62,7 +66,6 @@ msgstr "Город: %(city)s. Улица: %(street)s"
 #, python-format
 msgid "%(count)d ruble"
 msgid_plural "%(count)d rubles"
-msgstr[0] "%(count)d рублей"
-msgstr[1] "%(count)d рубль"
-msgstr[2] "%(count)d рубля"
-msgstr[3] ""
+msgstr[0] "%(count)d рубль"
+msgstr[1] "%(count)d рубля"
+msgstr[2] "%(count)d рублей"

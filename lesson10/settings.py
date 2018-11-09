@@ -60,7 +60,6 @@ MIDDLEWARE = [
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
 )
-print(LOCALE_PATHS)
 
 ROOT_URLCONF = 'lesson10.urls'
 
@@ -133,6 +132,7 @@ USE_TZ = True
 LANGUAGES = [
     ('en', 'English'),
     ('ru', 'Russian'),
+    ('pl', 'Polish'),
 ]
 
 
