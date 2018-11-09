@@ -1,0 +1,1 @@
+web: gunicorn lesson10.wsgi
