@@ -61,3 +61,7 @@ https://getbootstrap.com/docs/4.1/getting-started/download/
  ## DOCS
  - https://docs.djangoproject.com/en/2.1/topics/i18n/translation/
  - https://ru.wikipedia.org/wiki/Gettext
+ 
+ # HOMEWORK 9
+ 1. Почитать! про heroku https://devcenter.heroku.com/categories/working-with-django
+ 2. Придумать тему для диплома!.
