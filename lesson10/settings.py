@@ -151,3 +151,6 @@ LOGIN_REDIRECT_URL = reverse_lazy('index')
 LOGOUT_REDIRECT_URL = reverse_lazy('index')
 
 django_heroku.settings(locals())
+
+if os.getenv('DEBUG') == 'False':
+    DEBUG = False
