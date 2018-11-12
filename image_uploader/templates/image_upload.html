@@ -1,0 +1,19 @@
+<html>
+<head>
+
+</head>
+<body>
+    {{ errors }}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="name">
+        {# multiple="multiple" - для множественной загрузки #}
+        <input type="file" name="image" accept=".png, .jpg, .jpeg"/>
+        <button type="submit">Send</button>
+    </form>
+    {% for image in images %}
+        <img src="{{ image.image_base64 }}">
+        <br/>
+    {% endfor %}
+</body>
+</html>

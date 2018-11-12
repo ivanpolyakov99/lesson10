@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'testing',
     'logger',
+    'image_uploader'
 ]
 
 MIDDLEWARE = [
@@ -155,3 +156,5 @@ django_heroku.settings(locals())
 
 if os.getenv('DEBUG') == 'False':
     DEBUG = False
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

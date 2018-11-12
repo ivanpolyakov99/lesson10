@@ -65,3 +65,7 @@ https://getbootstrap.com/docs/4.1/getting-started/download/
  # HOMEWORK 9
  1. Почитать! про heroku https://devcenter.heroku.com/categories/working-with-django
  2. Придумать тему для диплома!.
+ 
+ # HOMEWORK 10
+ 1. Отправка файлов https://docs.djangoproject.com/en/2.1/topics/http/file-uploads/
+ 2. Отправка писем https://docs.djangoproject.com/en/2.1/topics/email/
