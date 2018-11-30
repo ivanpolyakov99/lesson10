@@ -69,3 +69,7 @@ https://getbootstrap.com/docs/4.1/getting-started/download/
  # HOMEWORK 10
  1. Отправка файлов https://docs.djangoproject.com/en/2.1/topics/http/file-uploads/
  2. Отправка писем https://docs.djangoproject.com/en/2.1/topics/email/
+
+# HOMEWORK 11
+1. https://restfulapi.net/
+2. https://www.django-rest-framework.org/
