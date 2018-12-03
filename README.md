@@ -73,3 +73,12 @@ https://getbootstrap.com/docs/4.1/getting-started/download/
 # HOMEWORK 11
 1. https://restfulapi.net/
 2. https://www.django-rest-framework.org/
+
+# HOMEWORK 12
+1. Создать Viewset для списка вопросов
+2. Добавить API для Ответа на вопрос
+
+url должен быть вида - /en/api/tests/3/questions/4/add_answer/
+
+3. Прочитать про celery
+http://docs.celeryproject.org/en/latest/index.html

@@ -40,6 +40,13 @@ class Test(models.Model):
         verbose_name_plural = _('Test plural')
 
 
+class TestResult(models.Model):
+    start_at = models.DateTimeField()
+    end_at = models.DateTimeField(null=True)
+    test = models.ForeignKey(Test, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
+
+
 class Question(models.Model):
     name = models.CharField(max_length=255)
     test = models.ForeignKey(

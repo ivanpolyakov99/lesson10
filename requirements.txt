@@ -1,9 +1,14 @@
+celery==4.2.1
 coverage==4.5.1
+dj-database-url==0.5.0
 Django==2.1
+django-heroku==0.3.1
+djangorestframework==3.9.0
 flake8==3.5.0
+gunicorn==19.9.0
 ipython==6.5.0
 mock==2.0.0
 Pillow==5.2.0
 psycopg2==2.7.5
-gunicorn==19.9.0
-django_heroku==0.3.1
+redis==2.10.6
+requests==2.19.1
